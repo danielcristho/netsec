@@ -1,0 +1,1 @@
+WAZUH_MANAGER="192.168.1.21" apt-get install wazuh-agent

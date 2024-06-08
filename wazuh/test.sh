@@ -1,0 +1,1 @@
+curl -k -u admin:tQv76aPE45XYpqjMC+6Y8YY?VPkwqeke https://192.168.1.11:9200

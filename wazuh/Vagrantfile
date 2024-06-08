@@ -1,0 +1,32 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://vagrantcloud.com/search.
+
+  # General Config
+  config.vm.box = "geerlingguy/ubuntu2004"
+  config.vm.disk :disk, size: "20GB", primary: true
+  config.ssh.insert_key = false
+#   config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.provider :virtualbox do |v|
+
+    # Customize the amount of memory on the VM:
+    v.memory = 2048
+    v.linked_clone = true
+  end
+
+  config.vm.define "app1" do |app|
+    app.vm.hostname = "server"
+    app.vm.network :private_network, ip: "192.168.1.11"
+  end
+
+    config.vm.define "app2" do |app|
+      app.vm.hostname = "agent"
+      app.vm.network :private_network, ip: "192.168.1.21"
+    end
+end
