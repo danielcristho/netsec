@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+    db-master:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: mariadb-master
+        restart: unless-stopped
+        ports:
+            - "3306:3306"
+        volumes:
+            - mariadbdata_master:/var/lib/mariadbdata_master
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+        environment:
+            MARIADB_ROOT_PASSWORD: M54if0IhQgc1
+            MARIADB_DATABASE: cowrie
+            MARIADB_USER: cowrie
+            MARIADB_PASSWORD: cowri3_king
+            TZ: "Asia/Jakarta"
+        healthcheck:
+            test: "mysqladmin ping -u  db_user -pM64if0IhQgc1"
+            interval: 2s
+            retries: 20
+
+volumes:
+    mariadbdata_master:
+    mariadbdata_slave:
