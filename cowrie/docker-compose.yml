@@ -1,15 +1,8 @@
 version: '3.8'
-
-volumes:
-  cowrie-etc:
-  cowrie-var:
-
 services:
   cowrie:
-    restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: cowrie/cowrie:latest
+    container_name: cowrie-cowrie-1
     ports:
       - "2222:2222"
       - "2223:2223"
