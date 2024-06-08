@@ -19,9 +19,9 @@ services:
         ports:
             - "3306:3306"
         volumes:
-            - mariadbdata_master:/var/lib/mariadbdata_master
-            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-            - ./mysql.sql:/docker-entrypoint-initdb.d/mysql.sql
+            - mysqldata:/var/lib/mysqldata
+            - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+            # - ./docker/mysql.sql:/var/lib/mysqldata/mysql.sql
         environment:
             MYSQL_ALLOW_EMPTY_PASSWORD: 1
             MYSQL_DATABASE: cowrie
@@ -36,4 +36,4 @@ services:
 volumes:
   # cowrie-etc:
   # cowrie-var:
-  mariadbdata_master:
+  mysqldata:
