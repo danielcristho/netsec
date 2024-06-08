@@ -1,17 +1,18 @@
 version: '3.8'
 
 services:
-    db-master:
+    cowrie-db:
         build:
             context: .
             dockerfile: Dockerfile
-        container_name: mariadb-master
+        container_name: mysql-cowrie
         restart: unless-stopped
         ports:
             - "3306:3306"
         volumes:
             - mariadbdata_master:/var/lib/mariadbdata_master
             - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+            - ./mysql.sql:/docker-entrypoint-initdb.d/mysql.sql
         environment:
             MARIADB_ROOT_PASSWORD: M54if0IhQgc1
             MARIADB_DATABASE: cowrie
@@ -25,4 +26,3 @@ services:
 
 volumes:
     mariadbdata_master:
-    mariadbdata_slave:

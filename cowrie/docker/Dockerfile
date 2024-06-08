@@ -1,4 +1,4 @@
-FROM mariadb:10.6.18
+FROM mysql:latest
 
 ADD my.cnf /etc/mysql/conf.d/my.cnf
 

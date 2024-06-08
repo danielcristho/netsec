@@ -2,7 +2,7 @@ version: '3.8'
 services:
   cowrie:
     image: cowrie/cowrie:latest
-    container_name: cowrie-cowrie-1
+    container_name: cowrie
     ports:
       - "2222:2222"
       - "2223:2223"
@@ -10,6 +10,30 @@ services:
       - cowrie-etc:/cowrie/cowrie-git/etc
       - cowrie-var:/cowrie/cowrie-git/var
 
+  cowrie-db:
+        build:
+            context: ./docker
+            dockerfile: Dockerfile
+        container_name: mysql-cowrie
+        restart: unless-stopped
+        ports:
+            - "3306:3306"
+        volumes:
+            - mariadbdata_master:/var/lib/mariadbdata_master
+            - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+            - ./mysql.sql:/docker-entrypoint-initdb.d/mysql.sql
+        environment:
+            MARIADB_ROOT_PASSWORD: M54if0IhQgc1
+            MARIADB_DATABASE: cowrie
+            MARIADB_USER: cowrie
+            MARIADB_PASSWORD: cowri3_king
+            TZ: "Asia/Jakarta"
+        healthcheck:
+            test: "mysqladmin ping -u  db_user -pM64if0IhQgc1"
+            interval: 2s
+            retries: 20
+
 volumes:
   cowrie-etc:
   cowrie-var:
+  mariadbdata_master:
