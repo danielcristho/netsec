@@ -1,14 +1,14 @@
 version: '3.8'
 services:
-  cowrie:
-    image: cowrie/cowrie:latest
-    container_name: cowrie
-    ports:
-      - "2222:2222"
-      - "2223:2223"
-    volumes:
-      - cowrie-etc:/cowrie/cowrie-git/etc
-      - cowrie-var:/cowrie/cowrie-git/var
+  # cowrie:
+  #   image: cowrie/cowrie:latest
+  #   container_name: cowrie
+  #   ports:
+  #     - "2222:2222"
+  #     - "2223:2223"
+  #   volumes:
+  #     - cowrie-etc:/cowrie/cowrie-git/etc
+  #     - cowrie-var:/cowrie/cowrie-git/var
 
   cowrie-db:
         build:
@@ -34,6 +34,6 @@ services:
             retries: 20
 
 volumes:
-  cowrie-etc:
-  cowrie-var:
+  # cowrie-etc:
+  # cowrie-var:
   mariadbdata_master:
