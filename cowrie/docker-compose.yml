@@ -23,16 +23,11 @@ services:
             - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
             # - ./docker/mysql.sql:/var/lib/mysqldata/mysql.sql
         environment:
-            MYSQL_ALLOW_EMPTY_PASSWORD: 1
-            MYSQL_DATABASE: cowrie
-            MYSQL_USER: cowrie
-            MYSQL_PASSWORD: cowri3_king
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
             TZ: "Asia/Jakarta"
-        healthcheck:
-            test: "mysqladmin ping -u  cowrie -pcowri3_king"
-            interval: 2s
-            retries: 20
-
 volumes:
   # cowrie-etc:
   # cowrie-var:
