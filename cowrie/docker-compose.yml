@@ -23,7 +23,7 @@ services:
             - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
             # - ./docker/mysql.sql:/var/lib/mysqldata/mysql.sql
         environment:
-            # MYSQL_ALLOW_EMPTY_PASSWORD: 1
+            MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 1
             MARIADB_DATABASE: cowrie
             MARIADB_USER: cowrie
             MARIADB_PASSWORD: cowri3_king
