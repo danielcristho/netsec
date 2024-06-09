@@ -24,9 +24,9 @@ services:
             # - ./docker/mysql.sql:/var/lib/mysqldata/mysql.sql
         environment:
             # MYSQL_ALLOW_EMPTY_PASSWORD: 1
-            MYSQL_DATABASE: cowrie
-            MYSQL_USER: cowrie
-            MYSQL_PASSWORD: cowri3_king
+            MARIADB_DATABASE: cowrie
+            MARIADB_USER: cowrie
+            MARIADB_PASSWORD: cowri3_king
             TZ: "Asia/Jakarta"
         healthcheck:
             test: "mysqladmin ping -u  cowrie -pcowri3_king"
