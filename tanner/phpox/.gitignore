@@ -1,0 +1,13 @@
+# Python crap
+
+__pycache__
+*.pyc
+
+# PHP files
+test.php
+bot.php
+samples
+
+sandbox.php
+
+.vscode
